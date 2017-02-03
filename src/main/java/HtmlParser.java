@@ -19,7 +19,13 @@ public class HtmlParser {
         //Load a Doc from a Url
        // Document doc = Jsoup.connect(url).get();
         Elements content = doc.getElementsByTag("section");
-        Elements links = content.select("a[class=link-type-hero]");
+        Elements targetSection = null;
+        for (Element e:content) {
+          targetSection = e.select("section:contains(Слаб против)");
+            if(targetSection.size() != 0)
+                break;
+        }
+        Elements links = targetSection.select("a[class=link-type-hero]");
         System.out.println("-----------------------");
         System.out.println(links);
     }
