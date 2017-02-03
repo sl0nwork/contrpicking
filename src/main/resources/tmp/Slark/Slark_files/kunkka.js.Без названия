@@ -1,0 +1,56 @@
+// For 82.179.72.77 (RU, Windows, Desktop)
+
+
+
+var OX_ads = OX_ads || [];
+(function() {
+  var el = document.getElementById("kunkka-top-leaderboard");
+  if (el !== null) {
+    var frame = document.createElement("iframe");
+    frame.id = "kunkka-top-leaderboard-frame";
+    frame.width = 1;
+    frame.height = 1;
+    el.appendChild(frame);
+    OX_ads.push({ slot_id: "kunkka-top-leaderboard-frame", auid: "443121" });
+  }
+  var el = document.getElementById("kunkka-atf-mpu");
+  if (el !== null) {
+    var frame = document.createElement("iframe");
+    frame.id = "kunkka-atf-mpu-frame";
+    frame.width = 1;
+    frame.height = 1;
+    el.appendChild(frame);
+    OX_ads.push({ slot_id: "kunkka-atf-mpu-frame", auid: "443124" });
+  }
+  var el = document.getElementById("kunkka-btf-mpu");
+  if (el !== null) {
+    var frame = document.createElement("iframe");
+    frame.id = "kunkka-btf-mpu-frame";
+    frame.width = 1;
+    frame.height = 1;
+    el.appendChild(frame);
+    OX_ads.push({ slot_id: "kunkka-btf-mpu-frame", auid: "443125" });
+  }
+  var el = document.getElementById("kunkka-bottom-leaderboard");
+  if (el !== null) {
+    var frame = document.createElement("iframe");
+    frame.id = "kunkka-bottom-leaderboard-frame";
+    frame.width = 1;
+    frame.height = 1;
+    el.appendChild(frame);
+    OX_ads.push({ slot_id: "kunkka-bottom-leaderboard-frame", auid: "443123" });
+  }
+  var el = document.getElementById("kunkka-skin");
+  if (el !== null) {
+    OX_ads.push({ slot_id: "kunkka-skin", auid: "447519" });
+  }
+
+  var oxads = document.createElement("script");
+  oxads.async = true;
+  oxads.type = "text/javascript";
+  oxads.src = "https://teamplayer-d.openx.net/w/1.0/jstag";
+  var node = document.getElementsByTagName("script")[0];
+  node.parentNode.insertBefore(oxads, node);
+})();
+
+
