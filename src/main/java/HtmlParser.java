@@ -35,6 +35,11 @@ public class HtmlParser {
             System.out.println(targetSection);
         }
 
+        if (targetSection == null || targetSection.size() == 0) {
+            System.out.println("couldn't find section");
+            return;
+        }
+
         Element element = targetSection.get(0);
         Elements elementsByAttribute = element.getElementsByAttribute("data-link-to");
 
