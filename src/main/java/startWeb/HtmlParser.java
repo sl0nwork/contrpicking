@@ -6,15 +6,33 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
+import java.util.HashMap;
+
 
 public class HtmlParser {
 
-    String url = "";
-    String heroName = "";
+    String url = "https://ru.dotabuff.com/heroes";
 
-    HtmlParser(String url, String heroName) {
-        this.url = url;
-        this.heroName = heroName;
+    HtmlParser(String heroName) {
+        url = url + "/" + heroName;
+    }
+
+    HashMap<String, String> parseHeroMap() throws IOException {
+        String repImgUrl = "https://ru.dotabuff.com";
+        HashMap<String, String> heroMap = new HashMap<String, String>();
+        String urlHeroGrid = "https://ru.dotabuff.com/heroes";
+        Document doc = Jsoup.connect(urlHeroGrid).get();
+        Elements target = doc.getElementsByAttributeValueStarting("style", "background: url");
+        String style;
+        for (Element e : target) {
+            style = e.attr("style");
+            style = repImgUrl + style.substring(16, style.length() - 1);
+            String heroName = e.text();
+            heroName = heroName.replaceAll(" ", "-");
+            heroName = heroName.toLowerCase();
+            heroMap.put(heroName, style);
+        }
+        return heroMap;
     }
 
     String parse() throws IOException {
@@ -35,7 +53,6 @@ public class HtmlParser {
 
         Element element = targetSection.get(0);
         Elements links = targetSection.select("a[class=link-type-hero]");
-        System.out.println("-----------------------");
         String result = "";
         for (Element e : links) {
             result = result + e.text() + " ";
@@ -44,5 +61,7 @@ public class HtmlParser {
     }
 
     public static void main(String[] args) throws Exception {
+        HtmlParser parser = new HtmlParser("puck");
+        parser.parseHeroMap();
     }
 }

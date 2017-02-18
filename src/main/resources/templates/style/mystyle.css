@@ -1,0 +1,16 @@
+.hero-grid {
+
+    border: 1px solid red;
+    width: 800px;
+    height: 497px;
+    margin: 20px auto 20px; /* сверху, слева/справа, снизу */
+}
+
+.MainFrame {
+    border: 1px solid black;
+}
+
+.hero {
+    border: 1px solid blue;
+    background-size: contain;
+}
